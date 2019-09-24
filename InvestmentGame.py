@@ -19,4 +19,14 @@ raw_data.keys()
 # This we probably don't need
 raw_data['Meta Data']
 
-print(Test)
+
+user = input("Do you have a user_id? (Yes/No)")
+if user == "Yes":
+    user_id = input("Please provide your user_id.")
+
+elif user == "No":
+    #create new user
+
+else:
+    print("Invalid input, please check your input.")
+
