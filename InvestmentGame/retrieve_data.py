@@ -13,12 +13,6 @@ if response.status_code != 200:
 # The service sends JSON data, we parse that into a Python datastructure
 raw_data = response.json()
 
-# Let's look at the raw data (it's a lot so let's limit it)
-#print(raw_data.keys())
-
-# This we probably don't need
-raw_data['Meta Data']
-
 # The actual time series is huge, let's just look at the first few items
 # Let's use itertools to do this in a lazy way
 import itertools
@@ -30,21 +24,17 @@ colname = list(raw_data.keys())[-1]
 data = raw_data[colname]
 
 df = pd.DataFrame(data).T.apply(pd.to_numeric)
-#df.info()
-#df.head()
 
 # Next we parse the index to create a datetimeindex
 df.index = pd.DatetimeIndex(df.index)
 
 # Let's fix the column names
 df.rename(columns=lambda s: s[3:], inplace=True)
-#df.info()
 
-#df.head()
 
 date = input("Geef een aankoopdatum? -> input must be yyyy-mm-dd")
 
 a = df.loc[date,'close']
-#b=3*a
+b=3*a
 print(a)
-#print(b)
+print(b)
