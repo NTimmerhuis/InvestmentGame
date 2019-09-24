@@ -4,4 +4,4 @@ class Portfolio:
         self.fund = fund
         self.aantal = aantal
         self.value = value
-        
+
