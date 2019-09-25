@@ -31,18 +31,20 @@ else:
     print("Invalid input, please check your input.")
 
 from InvestmentGame.order import Order
-order_nr = 1
+from InvestmentGame.user import User
+
+
 ordertype = ""
 order = input("You want to make an order? (y/n)")
 if order == "y":
     while ordertype not in ("buy","sell"):
         ordertype = input("buy or sell order?")
         if ordertype == "buy":
-            newbuyorder = input("Time, price, amount, fund_name, status")
-            newbuyorder= newbuyorder.split(",")
+            newbuyorder = input("order_id, Time, price, amount, fund_name, status")
+            newbuyorder= newbuyorder.split(',')
             newbuyorder.append(ordertype)
-            order_nr = Order(newbuyorder)
-            order_nr += 1
+            order = Order(*newbuyorder)
+            User.order.append(order)
         elif ordertype == "sell":
             newsellorder = input("ID, price, amount, fund_name")
         else:
