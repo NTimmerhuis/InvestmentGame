@@ -3,9 +3,14 @@ class User:
         self.user_name = user_name
         self.currency = currency
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.balance = balance
         self.orders = []
 =======
         self.balance = balanceelf.orders=[]
+=======
+        self.balance = balance
+        self.orders = []
+>>>>>>> master
 
 >>>>>>> master
