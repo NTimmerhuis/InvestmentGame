@@ -1,6 +1,5 @@
 class Order:
-    order_id = 0
-    def __init__(self, order_id, time, amount, symbol, status, order_type, price):
+    def __init__(self, order_id, time, amount, symbol, status, order_type, price, value):
         self.order_id = order_id
         self.time = time
         self.amount = amount
@@ -8,6 +7,7 @@ class Order:
         self.status = status
         self.order_type = order_type
         self.price = price
+        self.value = value
 
 
 

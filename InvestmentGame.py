@@ -1,7 +1,7 @@
 #Hoofdcode voor de InvestmentGame, vanuit deze code worden alle andere codes aangeroepen.
-
+import pprint
 from InvestmentGame.order import Order
-from InvestmentGame.User  import User
+from InvestmentGame.User import User
 from InvestmentGame.retrieve_data import get_price
 
 #Aanroepen van de user
@@ -27,27 +27,30 @@ else:
 ordertype = ""
 order = input("You want to make an order? (y/n)")
 if order == "y":
-    while order not in ("buy", "sell"):
-        ordertype = input("buy or sell order?")
-        if ordertype == "buy":
-            neworder = input("order_id, Time, amount, symbol, status")
-            neworder= neworder.split(',')
-            neworder.append(ordertype)
-            price = get_price(neworder[3], neworder[1])
-            neworder.append(price)
-            order = Order(*neworder)
-            User.order.append(order)
-        elif ordertype == "sell":
-            neworder = input("order_id, Time, amount, symbol, status")
-            neworder = neworder.split(',')
-            neworder.append(ordertype)
-            price = get_price(neworder[3], neworder[1])
-            order = Order(*neworder)
-            User.orders.append(order)
-        else:
-            print ("This is not an valid ordertype")
+    ordertype = input("buy or sell order?")
+    if ordertype == "buy":
+        neworder = input("order_id, Time, amount, symbol, status")
+        neworder= neworder.split(',')
+        neworder.append(ordertype)
+        price = get_price(neworder[3], neworder[1])
+        neworder.append(price)
+        value = neworder[2] * price
+        neworder.append(value)
+        order = Order(*neworder)
+        users.append(order)
+    elif ordertype == "sell":
+        neworder = input("order_id, Time, amount, symbol, status")
+        neworder = neworder.split(',')
+        neworder.append(ordertype)
+        price = get_price(neworder[3], neworder[1])
+        order = Order(*neworder)
+        users.append(order)
+    else:
+        print ("This is not an valid ordertype")
 elif order == "n":
     print("Maybe next time")
 else:
     print("This is not a valid answer")
 
+
+print (users)
