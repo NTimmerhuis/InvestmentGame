@@ -3,6 +3,7 @@ import pprint
 from InvestmentGame.order import Order
 from InvestmentGame.User import User
 from InvestmentGame.retrieve_data import get_price
+from InvestmentGame.balance_changes import update_balance
 
 #Aanroepen van de user
 #Wat nog kan worden toegevoegd is een echte database waar alle users in worden opgeslagen.
@@ -30,7 +31,7 @@ if order == "y":
     ordertype = input("buy or sell order?")
     if ordertype == "buy":
         neworder = input("order_id, Time, amount, symbol, status")
-        neworder= neworder.split(',')
+        neworder = neworder.split(',')
         neworder.append(ordertype)
         price = get_price(neworder[3], neworder[1])
         neworder.append(price.values)
@@ -53,4 +54,4 @@ else:
     print("This is not a valid answer")
 
 
-print (users)
+print(update_balance(ordertype, balance, value))
