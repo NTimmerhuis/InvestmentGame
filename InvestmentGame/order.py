@@ -1,13 +1,14 @@
 class Order:
     order_id = 0
-    def __init__(self, order_id, time, price, amount, fund_name, status, order_type):
+    def __init__(self, order_id, time, amount, symbol, status, order_type, price):
         self.order_id = order_id
         self.time = time
-        self.price = price
         self.amount = amount
-        self.fund_name = fund_name
+        self.symbol = symbol
         self.status = status
         self.order_type = order_type
+        self.price = price
+
 
 
     def total_order_value(self):

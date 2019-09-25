@@ -22,20 +22,39 @@ elif user == "n":
 else:
     print("Invalid input, please check your input.")
 
+<<<<<<< HEAD
+=======
+from InvestmentGame.order import Order
+from InvestmentGame.user import User
+from InvestmentGame.retrieve_data import get_price
+>>>>>>> master
 
 ordertype = ""
 order = input("You want to make an order? (y/n)")
 if order == "y":
-    while ordertype not in ("buy","sell"):
+    while order True:
         ordertype = input("buy or sell order?")
         if ordertype == "buy":
+<<<<<<< HEAD
             newbuyorder = input("order_id, Time, price, amount, fund_name, status")
             newbuyorder = newbuyorder.split(',')
             newbuyorder.append(ordertype)
             order = Order(*newbuyorder)
+=======
+            neworder = input("order_id, Time, amount, symbol, status")
+            neworder= neworder.split(',')
+            neworder.append(ordertype)
+            price = get_price(neworder[4], neworder[2])
+            neworder.append(price)
+            order = Order(*neworder)
+>>>>>>> master
             User.order.append(order)
         elif ordertype == "sell":
-            newsellorder = input("ID, price, amount, fund_name")
+            neworder = input("order_id, Time, amount, symbol, status")
+            neworder = neworder.split(',')
+            neworder.append(ordertype)
+            order = Order(*newbuyorder)
+            User.order.append(order)
         else:
             print ("This is not an valid ordertype")
 elif order == "n":
