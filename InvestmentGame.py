@@ -4,6 +4,11 @@ from InvestmentGame.order import Order
 from InvestmentGame.User import User
 from InvestmentGame.retrieve_data import get_price
 
+
+
+
+
+
 #Aanroepen van de user
 #Wat nog kan worden toegevoegd is een echte database waar alle users in worden opgeslagen.
 #Op dit moment begint de code elke keer weer met een lege lijst met users. Dit is voor later, niet nodig op dit moment.
@@ -25,29 +30,32 @@ else:
 
 
 ordertype = ""
-order = input("You want to make an order? (y/n)")
-if order == "y":
+wantorder = input("You want to make an order? (y/n)")
+if wantorder == "y":
     ordertype = input("buy or sell order?")
     if ordertype == "buy":
-        neworder = input("order_id, Time, amount, symbol, status")
-        neworder= neworder.split(',')
-        neworder.append(ordertype)
-        price = get_price(neworder[3], neworder[1])
-        neworder.append(price.values)
-        value = int(price.values) * int(price)
-        neworder.append(value)
-        order = Order(*neworder)
+        order_id = input("order_id?")
+        time = input("time?")
+        amount = input("What amount ?")
+        symbol = input("what symbol?")
+        status = "open"
+        price = get_price(symbol, time).values
+        value = int(price) * int(amount)
+        order = Order(order_id, time, amount, symbol, status, ordertype, price, value)
         users.append(order)
     elif ordertype == "sell":
-        neworder = input("order_id, Time, amount, symbol, status")
-        neworder = neworder.split(',')
-        neworder.append(ordertype)
-        price = get_price(neworder[3], neworder[1])
-        order = Order(*neworder)
+        order_id = input("order_id?")
+        time = input("time? YYYY-MM-DD")
+        amount = input("What amount ?")
+        symbol = input("what symbol?")
+        status = "open"
+        price = get_price(symbol, time).values
+        value = int(price) * int(amount)
+        order = Order(order_id, time, amount, symbol, status, ordertype, price, value)
         users.append(order)
     else:
         print ("This is not an valid ordertype")
-elif order == "n":
+elif wantorder == "n":
     print("Maybe next time")
 else:
     print("This is not a valid answer")
