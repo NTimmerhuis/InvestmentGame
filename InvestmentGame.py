@@ -33,8 +33,8 @@ if order == "y":
         neworder= neworder.split(',')
         neworder.append(ordertype)
         price = get_price(neworder[3], neworder[1])
-        neworder.append(price)
-        value = neworder[2] * price
+        neworder.append(price.values)
+        value = int(price.values) * int(price)
         neworder.append(value)
         order = Order(*neworder)
         users.append(order)

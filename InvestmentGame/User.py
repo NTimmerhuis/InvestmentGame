@@ -6,5 +6,5 @@ class User:
         self.orders = []
 
     def __repr__(self):
-        return str(self.user_name + "," + self.currency + "," +  self.balance + "," + self.orders)
+        return self.user_name + "," + self.currency + "," + str(self.balance)
 

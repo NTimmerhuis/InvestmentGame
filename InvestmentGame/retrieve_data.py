@@ -30,5 +30,6 @@ def get_price(symbol,date):
     # Let's fix the column names
     df.rename(columns=lambda s: s[3:], inplace=True)
 
-    a = df.loc[date,'close']
+    a = df.loc[date, 'close']
     return a
+
