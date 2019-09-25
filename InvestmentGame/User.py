@@ -3,5 +3,6 @@ class User:
         self.user_id = user_id
         self.user_name = user_name
         self.currency = currency
-        self.balance = balanceelf.orders=[]
+        self.balance = balance
+        self.orders = []
 

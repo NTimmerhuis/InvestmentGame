@@ -32,6 +32,3 @@ def get_price(symbol,date):
 
     a = df.loc[date,'close']
     return a
-
-x = get_price('KO','2019-09-24')
-print(x)
