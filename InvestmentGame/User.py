@@ -26,4 +26,4 @@ class User:
         if wantorder == "y":
             self.orders.append({"order_id":order_id,"order_type":ordertype, "symbol":symbol, "date":time, "amount":amount, "price":price, "value":value})
         else:
-            return "ERROR"
+            return "Echt een TERROR ERROR"

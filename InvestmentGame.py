@@ -12,10 +12,13 @@ from InvestmentGame.balance_changes import update_balance
 #Daarom altijd n invullen op de eerste vraag.
 
 users = []
+
 user = input("Do you have a user_id? (y/n)")
 if user == "y":
-    user_id = input("Please provide your user_id.")
-    #Hier moet later een database gekoppeld worden om user_id op te zoeken en de gegevens op te halen.
+    user_name = input("Please provide your user_name.")
+    for user_name in users:
+
+#Hier moet later een database gekoppeld worden om user_id op te zoeken en de gegevens op te halen.
 elif user == "n":
     user_name = input("What is your name?")
     currency = input("What is your preferred currency?")
@@ -24,7 +27,7 @@ elif user == "n":
     users.append(new_user)
 else:
     print("Invalid input, please check your input.")
-
+print(users)
 
 ordertype = ""
 order_id = 0
