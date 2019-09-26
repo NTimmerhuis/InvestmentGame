@@ -65,6 +65,9 @@ if wantorder == "y":
         order = Order(order_id, time, amount, symbol, status, ordertype, price, value)
         user.add_portfolio(symbol, amount)
         user.update_orderlist(wantorder, order_id, ordertype, symbol, time, amount, price, value)
+        print("New Balance: " + str(update_balance(ordertype, balance, value)))
+        print(user.orders)
+        print(user.portfolio)
     else:
         print ("This is not an valid ordertype")
 elif wantorder == "n":
