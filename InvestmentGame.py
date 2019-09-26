@@ -4,31 +4,31 @@ from InvestmentGame.order import Order
 from InvestmentGame.User import User
 from InvestmentGame.retrieve_data import get_price
 from InvestmentGame.balance_changes import update_balance
-df = pd.read_csv("InvestmentGame/data.csv")
+df = pd.read_csv("InvestmentGame/data_modified.csv")
 
 #Aanroepen van de user
 #Wat nog kan worden toegevoegd is een echte database waar alle users in worden opgeslagen.
 #Op dit moment begint de code elke keer weer met een lege lijst met users. Dit is voor later, niet nodig op dit moment.
 #Daarom altijd n invullen op de eerste vraag.
 
-
 user = input("Do you already have an account? (y/n)")
 if user == "n":
     user_name = input("What is your name?")
     currency = input("What is your preferred currency?")
     balance = int(input("What is your starting balance?"))
-    new_user = User(user_name, currency, balance)
+    user = User(user_name, currency, balance)
     userlist = {"user_name": user_name, 'currency': currency, 'balance': balance}
     df = df.append(userlist, ignore_index=True)
     df.set_index('user_name', inplace=True)
     print(df)
-
-    df.to_csv("InvestmentGame/data.csv", index=False)
+    df.to_csv("InvestmentGame/data_modified.csv")
 elif user == "y":
     user_name = input("Please provide your user_name.")
-    retrieve_user_info = df[df["user_name"] == user_name]
-    print(retrieve_user_info)
-
+    retrieve_user_info = df[df['user_name'] == user_name]
+    user_name = retrieve_user_info.iloc[0]["user_name"]
+    currency = retrieve_user_info.iloc[0]["currency"]
+    balance = retrieve_user_info.iloc[0]["balance"]
+    user = User(user_name, currency, balance)
 else:
     print("Invalid input, please check your input.")
 
@@ -47,9 +47,8 @@ if wantorder == "y":
         price = get_price(symbol, time).values
         value = int(price) * int(amount)
         order = Order(order_id, time, amount, symbol, status, ordertype, price, value)
-        new_user.add_portfolio(symbol, amount)
-        new_user.update_orderlist(wantorder, order_id, ordertype, symbol, time, amount, price, value)
-        users.append(order)
+        user.add_portfolio(symbol, amount)
+        user.update_orderlist(wantorder, order_id, ordertype, symbol, time, amount, price, value)
         df = df.loc[user_name, 'orders'] = ['5']
         df = df.loc[user_name, 'portfolio'] = ['5']
         print(df)
@@ -61,9 +60,8 @@ if wantorder == "y":
         price = get_price(symbol, time).values
         value = int(price) * int(amount)
         order = Order(order_id, time, amount, symbol, status, ordertype, price, value)
-        new_user.add_portfolio(symbol, amount)
-        new_user.update_orderlist(wantorder, order_id, ordertype, symbol, time, amount, price, value)
-        users.append(order)
+        user.add_portfolio(symbol, amount)
+        user.update_orderlist(wantorder, order_id, ordertype, symbol, time, amount, price, value)
     else:
         print ("This is not an valid ordertype")
 elif wantorder == "n":
@@ -72,5 +70,5 @@ else:
     print("This is not a valid answer")
 
 print("New Balance: " + str(update_balance(ordertype, balance, value)))
-print(new_user.orders)
-print(new_user.portfolio)
+print(user.orders)
+print(user.portfolio)

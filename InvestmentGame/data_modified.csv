@@ -1,4 +1,5 @@
-,user_name, currency, balance, orders, portfolio
-0,Rutger, eur,10000,,
-1,Nicole, eur,50,,
-2,Philip, usd,500000,,
+user_name,currency,balance,orders,portfolio,balance,currency
+Philip, EUR, 1000,
+Rutger, USD, 5000,
+Nicole, JPY, 3000,
+Trump, USD, 100,
