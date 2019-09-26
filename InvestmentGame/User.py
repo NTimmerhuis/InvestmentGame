@@ -11,10 +11,13 @@ class User:
 
     def update_portfolio(self, symbol, number, ordertype):
         if ordertype == "buy":
-                self.portfolio[symbol] = number
+                self.portfolio[symbol] += number
 
         elif ordertype == "sell":
-                self.portfolio[symbol] = number
+                self.portfolio[symbol] -= number
 
         else:
             return "Order type is not known"
+
+    def add_portfolio(self, symbol, number):
+        self.portfolio[symbol] = number
