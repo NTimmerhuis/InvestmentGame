@@ -49,9 +49,12 @@ if wantorder == "y":
         order = Order(order_id, time, amount, symbol, status, ordertype, price, value)
         user.add_portfolio(symbol, amount)
         user.update_orderlist(wantorder, order_id, ordertype, symbol, time, amount, price, value)
-        df = df.loc[user_name, 'orders'] = ['5']
-        df = df.loc[user_name, 'portfolio'] = ['5']
+        # df = df.loc[user_name, 'orders'] = ['5']
+        # df = df.loc[user_name, 'portfolio'] = ['5']
         print(df)
+        print("New Balance: " + str(update_balance(ordertype, balance, value)))
+        print(user.orders)
+        print(user.portfolio)
     elif ordertype == "sell":
         time = input("What is the date of the order? Please provide in the following format YYYY-MM-DD")
         amount = input("How many stocks do you want to sell?")
