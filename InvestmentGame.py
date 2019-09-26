@@ -7,9 +7,6 @@ from InvestmentGame.balance_changes import update_balance
 df = pd.read_csv("InvestmentGame/data_modified.csv")
 
 #Aanroepen van de user
-#Wat nog kan worden toegevoegd is een echte database waar alle users in worden opgeslagen.
-#Op dit moment begint de code elke keer weer met een lege lijst met users. Dit is voor later, niet nodig op dit moment.
-#Daarom altijd n invullen op de eerste vraag.
 
 user = input("Do you already have an account? (y/n)")
 if user == "n":
@@ -75,6 +72,3 @@ elif wantorder == "n":
 else:
     print("This is not a valid answer")
 
-print("New Balance: " + str(update_balance(ordertype, balance, value)))
-print(user.orders)
-print(user.portfolio)
