@@ -4,28 +4,30 @@ from InvestmentGame.order import Order
 from InvestmentGame.User import User
 from InvestmentGame.retrieve_data import get_price
 from InvestmentGame.balance_changes import update_balance
-df = pd.read_csv("InvestmentGame\data.csv")
+df = pd.read_csv("InvestmentGame/data.csv")
 
 #Aanroepen van de user
 #Wat nog kan worden toegevoegd is een echte database waar alle users in worden opgeslagen.
 #Op dit moment begint de code elke keer weer met een lege lijst met users. Dit is voor later, niet nodig op dit moment.
 #Daarom altijd n invullen op de eerste vraag.
 
-users = []
-user = input("Do you have a user_id? (y/n)")
-if user == "y":
-    user_id = input("Please provide your user_id.")
-    #Hier moet later een database gekoppeld worden om user_id op te zoeken en de gegevens op te halen.
-elif user == "n":
+
+user = input("Do you already have an account? (y/n)")
+if user == "n":
     user_name = input("What is your name?")
     currency = input("What is your preferred currency?")
     balance = int(input("What is your starting balance?"))
     new_user = User(user_name, currency, balance)
-    users.append(new_user)
     userlist = {"user_name": user_name, 'currency': currency, 'balance': balance}
     df = df.append(userlist, ignore_index=True)
     df.set_index('user_name', inplace=True)
     print(df)
+
+    df.to_csv("InvestmentGame/data.csv", index=False)
+elif user == "y":
+    user_name = input("Please provide your user_name.")
+    retrieve_user_info = df[df["user_name"] == user_name]
+    print(retrieve_user_info)
 
 else:
     print("Invalid input, please check your input.")
