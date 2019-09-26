@@ -39,6 +39,7 @@ if wantorder == "y":
         price = get_price(symbol, time).values
         value = int(price) * int(amount)
         order = Order(order_id, time, amount, symbol, status, ordertype, price, value)
+        new_user.update_portfolio(symbol, amount, ordertype)
         users.append(order)
     elif ordertype == "sell":
         order_id = input("order_id?")
@@ -49,6 +50,7 @@ if wantorder == "y":
         price = get_price(symbol, time).values
         value = int(price) * int(amount)
         order = Order(order_id, time, amount, symbol, status, ordertype, price, value)
+        new_user.update_portfolio(symbol, amount, ordertype)
         users.append(order)
     else:
         print ("This is not an valid ordertype")
@@ -57,4 +59,5 @@ elif wantorder == "n":
 else:
     print("This is not a valid answer")
 
-print(update_balance(ordertype, balance, value))
+print("New Balance: " + str(update_balance(ordertype, balance, value)))
+print(new_user.portfolio)

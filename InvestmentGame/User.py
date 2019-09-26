@@ -9,5 +9,12 @@ class User:
     def __repr__(self):
         return self.user_name + "," + self.currency + "," + str(self.balance)
 
-    def update_portfolio(self, symbol, number):
-        self.portfolio[symbol] = number
+    def update_portfolio(self, symbol, number, ordertype):
+        if ordertype == "buy":
+                self.portfolio[symbol] = number
+
+        elif ordertype == "sell":
+                self.portfolio[symbol] = number
+
+        else:
+            return "Order type is not known"
