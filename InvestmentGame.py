@@ -1,10 +1,10 @@
 #Hoofdcode voor de InvestmentGame, vanuit deze code worden alle andere codes aangeroepen.
-import pprint
+import pandas as pd
 from InvestmentGame.order import Order
 from InvestmentGame.User import User
 from InvestmentGame.retrieve_data import get_price
 from InvestmentGame.balance_changes import update_balance
-
+df = pd.read_csv("InvestmentGame\data.csv")
 
 #Aanroepen van de user
 #Wat nog kan worden toegevoegd is een echte database waar alle users in worden opgeslagen.
@@ -25,6 +25,14 @@ elif user == "n":
     balance = int(input("What is your starting balance?"))
     new_user = User(user_name, currency, balance)
     users.append(new_user)
+    userlist = {"user_name": user_name, 'currency': currency, 'balance': balance}
+    df = df.append(userlist, ignore_index=True)
+    df.set_index('user_name')
+    print(df)
+    #df2.loc[user_name, 'currency'] = currency
+
+    #print(df2)
+
 else:
     print("Invalid input, please check your input.")
 print(users)
@@ -67,3 +75,4 @@ else:
 print("New Balance: " + str(update_balance(ordertype, balance, value)))
 print(new_user.orders)
 print(new_user.portfolio)
+print(Dataframe)
