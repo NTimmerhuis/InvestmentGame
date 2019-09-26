@@ -1,4 +1,4 @@
-user_name, currency, balance
+user_name,currency,balance,orders,portfolio
 Rutger, eur, 10000
 Nicole, eur, 50
 Philip, usd, 500000
