@@ -40,7 +40,8 @@ if wantorder == "y":
         price = get_price(symbol, time).values
         value = int(price) * int(amount)
         order = Order(order_id, time, amount, symbol, status, ordertype, price, value)
-        new_user.update_portfolio(symbol, amount, ordertype)
+        new_user.add_portfolio(symbol, amount)
+        new_user.update_orderlist(wantorder, order_id, ordertype, symbol, time, amount, price, value)
         users.append(order)
     elif ordertype == "sell":
         time = input("What is the date of the order? Please provide in the following format YYYY-MM-DD")
@@ -50,7 +51,8 @@ if wantorder == "y":
         price = get_price(symbol, time).values
         value = int(price) * int(amount)
         order = Order(order_id, time, amount, symbol, status, ordertype, price, value)
-        new_user.update_portfolio(symbol, amount, ordertype)
+        new_user.add_portfolio(symbol, amount)
+        new_user.update_orderlist(wantorder, order_id, ordertype, symbol, time, amount, price, value)
         users.append(order)
     else:
         print ("This is not an valid ordertype")

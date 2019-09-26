@@ -3,7 +3,7 @@ class User:
         self.user_name = user_name
         self.currency = currency
         self.balance = balance
-        self.orders = {}
+        self.orders = []
         self.portfolio = {}
 
     def __repr__(self):
@@ -21,3 +21,9 @@ class User:
 
     def add_portfolio(self, symbol, number):
         self.portfolio[symbol] = number
+
+    def update_orderlist(self, wantorder, order_id, ordertype, symbol, time, amount, price, value):
+        if wantorder == "y":
+            self.orders.append({"order_id":order_id,"order_type":ordertype, "symbol":symbol, "date":time, "amount":amount, "price":price, "value":value})
+        else:
+            return "ERROR"
