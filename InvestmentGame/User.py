@@ -9,5 +9,5 @@ class User:
     def __repr__(self):
         return self.user_name + "," + self.currency + "," + str(self.balance)
 
-    def update_portfolio(self, symbol,number):
+    def update_portfolio(self, symbol, number):
         self.portfolio[symbol] = number
