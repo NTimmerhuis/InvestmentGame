@@ -24,11 +24,8 @@ elif user == "n":
     users.append(new_user)
     userlist = {"user_name": user_name, 'currency': currency, 'balance': balance}
     df = df.append(userlist, ignore_index=True)
-    df.set_index('user_name')
+    df.set_index('user_name', inplace=True)
     print(df)
-    #df2.loc[user_name, 'currency'] = currency
-
-    #print(df2)
 
 else:
     print("Invalid input, please check your input.")
@@ -51,6 +48,9 @@ if wantorder == "y":
         new_user.add_portfolio(symbol, amount)
         new_user.update_orderlist(wantorder, order_id, ordertype, symbol, time, amount, price, value)
         users.append(order)
+        df = df.loc[user_name, 'orders'] = ['5']
+        df = df.loc[user_name, 'portfolio'] = ['5']
+        print(df)
     elif ordertype == "sell":
         time = input("What is the date of the order? Please provide in the following format YYYY-MM-DD")
         amount = input("How many stocks do you want to sell?")
@@ -72,4 +72,3 @@ else:
 print("New Balance: " + str(update_balance(ordertype, balance, value)))
 print(new_user.orders)
 print(new_user.portfolio)
-print(Dataframe)
