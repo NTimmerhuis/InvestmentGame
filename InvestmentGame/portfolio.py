@@ -1,8 +1,6 @@
 class Portfolio:
-    def __init__(self, portfolio_id, fund, portfolio_name, aantal, value):
-        self.portfolio_id = portfolio_id
-        self.fund = fund
-        self.portfolio_name = portfolio_name
+    def __init__(self, fund_symbol, aantal,):
+        self.fund_symbol = fund_symbol
         self.aantal = aantal
-        self.value = value
+
 
