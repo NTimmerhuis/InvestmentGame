@@ -3,7 +3,7 @@ class User:
         self.user_name = user_name
         self.currency = currency
         self.balance = balance
-        self.orders = []
+        self.orders = {}
         self.portfolio = {}
 
     def __repr__(self):
