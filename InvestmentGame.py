@@ -33,7 +33,7 @@ if wantorder == "y":
     if ordertype == "buy":
         order_id = input("order_id?")
         time = input("time?")
-        amount = input("What amount?")
+        amount = input("What amount ?")
         symbol = input("what symbol?")
         status = "open"
         price = get_price(symbol, time).values
